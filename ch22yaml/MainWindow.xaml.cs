@@ -23,6 +23,15 @@ namespace ch22yaml
         public MainWindow()
         {
             InitializeComponent();
+            this.DataContext = new Data.MainViewModel();
         }
+
+        //public void testMethod()
+        //{
+        //    var list = Data.Ch2.ReadChe2File(@"C:\RC\TVTest\BonDriver_PX_W3PE_S1.ch2");
+        //    var chlist = list.Select(x => x.ToMirakurunChannel());
+        //    Data.MirakurunChannel.ToYamlFile(chlist);
+        //    Console.WriteLine(list.Count());
+        //}
     }
 }
