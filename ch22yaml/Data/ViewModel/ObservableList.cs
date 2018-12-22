@@ -1,8 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System;
+
 namespace ch22yaml.Data
 {
+    [Obsolete]
     public class ObservableList<T> : IList<T>, INotifyCollectionChanged
     {
         private IList<T> _List;

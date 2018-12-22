@@ -77,7 +77,6 @@ namespace ch22yaml.Data
                     var mdlg = new SaveFileDialog();
                     mdlg.Filter = "Mirakurun Yaml(*.yml)|*.yml|All file(*.*)|*.*";
                     var defPath = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), @".Mirakurun");
-                    //var defPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
                     mdlg.InitialDirectory = defPath;
                     mdlg.FileName = "channels.yml";
                     if(mdlg.ShowDialog() == true)
