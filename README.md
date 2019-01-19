@@ -1,9 +1,9 @@
 # ch2toYaml
 Convert ch2 file to yml file. For mirakurun BS CS channel setting.
 
-Tvtestでチャンネルスキャンを行ってBS、CSのチャンネルが変動する場合に、Mirakurunのチャンネル設定をしやすくするツールです。
+- Tvtestでチャンネルスキャンを行ってBS、CSのチャンネル(BonDriver_TX.ch2)が変動した場合、[Chinachu/Mirakurun](https://github.com/Chinachu/Mirakurun)のチャンネル設定(channel.yml)をしやすくするツールです。
 
 以下のプロジェクトを使用させて頂いております。
-Fody.Weaver　バイナリをシンプルにするために使用しています。
-Fody.PropertyChanged　WPFでのUIバインディングをしやすく為に使用しています。
-YamlDotNet　Yamlファイルを書きやすくするために使用しています。
+- [Fody/Costura](https://github.com/Fody/Costura)　バイナリをシンプルにするために使用しています。
+- [Fody/PropertyChanged](https://github.com/Fody/PropertyChanged)　WPFでのUIバインディングをしやすく為に使用しています。
+- [aaubry/YamlDotNet](https://github.com/aaubry/YamlDotNet)　Yamlファイルを書きやすくするために使用しています。
