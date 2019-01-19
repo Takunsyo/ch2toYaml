@@ -1,7 +1,7 @@
 # ch2toYaml
 Convert ch2 file to yml file. For mirakurun BS CS channel setting.
 
-- Tvtestでチャンネルスキャンを行ってBS、CSのチャンネル(BonDriver_TX.ch2)が変動した場合、[Chinachu/Mirakurun](https://github.com/Chinachu/Mirakurun)のチャンネル設定(channel.yml)をしやすくするツールです。
+- [Tvtest](https://github.com/DBCTRADO/TVTest)でチャンネルスキャンを行ってBS、CSのチャンネル(BonDriver_TX.ch2)が変動した場合、[Mirakurun](https://github.com/Chinachu/Mirakurun)のチャンネル設定(channel.yml)をしやすくするツールです。
 
 以下のプロジェクトを使用させて頂いております。
 - [Fody/Costura](https://github.com/Fody/Costura)　バイナリをシンプルにするために使用しています。
