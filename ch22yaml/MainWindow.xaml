@@ -5,18 +5,45 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ch22yaml"
         mc:Ignorable="d"
-        Title="Tvtest Ch2 to yml Channel Converter" Height="560" Width="490" ResizeMode="NoResize">
-    <Grid Margin="2">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition Width="60"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="50*"/>
-            <RowDefinition Height="50*"/>
-        </Grid.RowDefinitions>
-        <DataGrid Grid.Column="0" Grid.RowSpan="2" Margin="3" ItemsSource="{Binding ChannelList}"/>
-        <Button Grid.Column="1" Grid.Row="0" Margin="3,50" Content="OpenCh2" Command="{Binding OpenCH2}"/>
-        <Button Grid.Column="1" Grid.Row="1" Margin="3,50" Content="SaveYml" Command="{Binding SaveYaml}"/>
-    </Grid>
+        Title="Tvtest Ch2 to yml Channel Converter" Height="560" Width="490" ResizeMode="CanMinimize">
+
+    <DockPanel LastChildFill="True">
+        <!--
+        <DockPanel.Background>
+            <DrawingBrush Stretch="None" TileMode="Tile" Viewport="0,0,20,20" ViewportUnits="Absolute">
+                <DrawingBrush.Drawing>
+                    <DrawingGroup>
+                        <GeometryDrawing Brush="#FFE2E6E8">
+                            <GeometryDrawing.Geometry>
+                                <RectangleGeometry Rect="0,0,20,20" />
+                            </GeometryDrawing.Geometry>
+                        </GeometryDrawing>
+                        <GeometryDrawing Brush="#FFD3DADD">
+                            <GeometryDrawing.Geometry>
+                                <GeometryGroup>
+                                    <RectangleGeometry Rect="0,0,10,10" />
+                                    <RectangleGeometry Rect="10,10,10,10" />
+                                </GeometryGroup>
+                            </GeometryDrawing.Geometry>
+                        </GeometryDrawing>
+                    </DrawingGroup>
+                </DrawingBrush.Drawing>
+            </DrawingBrush>
+        </DockPanel.Background>
+        -->
+        <Grid Margin="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="60"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50*"/>
+                <RowDefinition Height="50*"/>
+            </Grid.RowDefinitions>
+            <DataGrid Grid.Column="0" Grid.RowSpan="2" Margin="3" ItemsSource="{Binding ChannelList}" Background="Transparent" />
+            <Button Grid.Column="1" Grid.Row="0" Margin="3,50" Content="OpenCh2" Command="{Binding OpenCH2}" Background="#aff0f2f3"/>
+            <Button Grid.Column="1" Grid.Row="1" Margin="3,50" Content="SaveYml" Command="{Binding SaveYaml}" Background="#aff0f2f3"/>
+        </Grid>
+
+    </DockPanel>
 </Window>
