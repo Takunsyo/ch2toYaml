@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ch22yaml"
         mc:Ignorable="d"
-        Title="Tvtest Ch2 to yml Channel Converter" Height="560" Width="490" ResizeMode="CanMinimize">
+        Title="{Binding Path=Caption,Mode=OneWay}" Height="560" Width="490" ResizeMode="CanMinimize">
 
     <DockPanel LastChildFill="True">
         <!--

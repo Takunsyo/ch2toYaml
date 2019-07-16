@@ -28,7 +28,9 @@ namespace ch22yaml.Data
         public bool Status { get; set; }
 
         public CHType Type { get; set; }
-        
+
+        internal bool Enabled { get; set; } = true;
+
         /// <summary>
         /// Read a *.Ch2 file.
         /// </summary>
@@ -36,7 +38,7 @@ namespace ch22yaml.Data
         /// <returns></returns>
         public static IEnumerable<Ch2>ReadChe2File(string fullPath)
         {
-            if (!System.IO.File.Exists(fullPath)) yield return null;
+            if (!System.IO.File.Exists(fullPath)) yield break;
             using (var reader = new System.IO.StreamReader(fullPath, Encoding.GetEncoding("Shift-JIS")))
             {
                 string line;
@@ -59,7 +61,7 @@ namespace ch22yaml.Data
                                     mType = CHType.GR;
                                     break;
                                 default:
-                                    mType = CHType.Sky;
+                                    mType = CHType.SKY;
                                     break;
                             }
                         }

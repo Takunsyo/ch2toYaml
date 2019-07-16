@@ -19,14 +19,9 @@
 
         public byte Space { get => mCH.TuningSpace; set => mCH.TuningSpace = value; }
 
-        public bool IsEnabled { get; set; } = true;
+        public bool IsEnabled { get => mCH.Enabled; set => mCH.Enabled = value; }
 
-        public MirakurunChannel GetMirakurunChannel()
-        {
-            var value = mCH.ToMirakurunChannel();
-            if (!IsEnabled) value.IsDisabled = true;
-            return value;
-        }
+        public MirakurunChannel GetMirakurunChannel() => mCH.ToMirakurunChannel();
 
     }
 }

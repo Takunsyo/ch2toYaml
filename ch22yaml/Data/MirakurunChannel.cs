@@ -18,9 +18,11 @@ namespace ch22yaml.Data
             this.Channel = ch.Channel.ToString();
             this.ServiceID = ch.ServiceID;
             this.Space = ch.TuningSpace;
+            if (!ch.Enabled) this.IsDisabled = true;
             switch (this.Type)
             {
                 case CHType.BS:
+                case CHType.SKY:
                     this.Satelite = "0";
                     break;
                 case CHType.CS:

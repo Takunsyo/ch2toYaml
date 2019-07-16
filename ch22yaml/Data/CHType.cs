@@ -2,6 +2,6 @@
 {
     public enum CHType
     {
-        GR = 1, BS = 2, CS = 4, Sky = 8
+        GR = 1, BS = 2, CS = 4, SKY = 8
     }
 }

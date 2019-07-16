@@ -15,13 +15,19 @@ namespace ch22yaml.Data
         private List<ChannelViewModel> GRList { get; set; }
         private List<ChannelViewModel> BSList { get; set; }
         private List<ChannelViewModel> CSList { get; set; }
+        private List<ChannelViewModel> SKList { get; set; }
 
+        private bool isSaved = false;
+
+        public string Caption => (isSaved ? "[Saved]":"") + "Tvtest Ch2 to yml Channel Converter";            
+        
         public MainViewModel()
         {
             ChannelList = new ObservableCollection<ChannelViewModel>();
             GRList = new List<ChannelViewModel>();
             BSList = new List<ChannelViewModel>();
             CSList = new List<ChannelViewModel>();
+            SKList = new List<ChannelViewModel>();
         }
 
         public ICommand OpenCH2 =>new CustonCommand(this.Open);
@@ -56,13 +62,21 @@ namespace ch22yaml.Data
                                 CSList.Add(new ChannelViewModel(item));
                             }
                             break;
-                        default: break;
+                        default:
+                            if (!SKList.Any(x => x.ServiceID == item.ServiceID))
+                            {
+                                SKList.Add(new ChannelViewModel(item));
+                            }
+                            break;
                     }
                 }
                 GRList.Sort((x, y) => x.Channel == y.Channel ? x.ServiceID.CompareTo(y.ServiceID) : x.Channel.CompareTo(y.Channel));
                 BSList.Sort((x, y) => x.Channel == y.Channel ? x.ServiceID.CompareTo(y.ServiceID) : x.Channel.CompareTo(y.Channel));
                 CSList.Sort((x, y) => x.Channel == y.Channel ? x.ServiceID.CompareTo(y.ServiceID) : x.Channel.CompareTo(y.Channel));
-                ChannelList = new ObservableCollection<ChannelViewModel>(GRList.Concat(BSList).Concat(CSList));
+                SKList.Sort((x, y) => x.Channel == y.Channel ? x.ServiceID.CompareTo(y.ServiceID) : x.Channel.CompareTo(y.Channel));
+                ChannelList = new ObservableCollection<ChannelViewModel>(GRList.Concat(BSList).Concat(CSList).Concat(SKList));
+                this.isSaved = false;
+                this.NotifyPropertyChanged(nameof(this.Caption));
             }
             else return;
         }
@@ -73,10 +87,11 @@ namespace ch22yaml.Data
         {
             if (GRList.Count <= 0 || BSList.Count <= 0 || CSList.Count <= 0)
             {
-                var tmp = (GRList.Count <= 0 ? "[GR]" : "") + (BSList.Count <= 0 ? "[BS]" : "") + (CSList.Count <= 0 ? "[CS]" : "");
-                MessageBox.Show($"You have not fully import all broadcast types!\n please add following type:\n {tmp}", "Internal check",
-                    MessageBoxButton.OK, MessageBoxImage.Exclamation);
-                return;
+                var tmp = (GRList.Count <= 0 ? "[GR] " : "") + (BSList.Count <= 0 ? "[BS] " : "") + (CSList.Count <= 0 ? "[CS] " : "");
+                if (MessageBox.Show($"You have not fully import all broadcast types!\n\n Following broadcast type is missing:\n" +
+                                    $"   {tmp} \n\n ---Do you still want to proceed? ---", "Internal check",
+                                MessageBoxButton.YesNo, MessageBoxImage.Information) == MessageBoxResult.No)
+                    return;                
             }
             var mdlg = new SaveFileDialog();
             mdlg.Filter = "Mirakurun Yaml(*.yml)|*.yml|All file(*.*)|*.*";
@@ -86,6 +101,8 @@ namespace ch22yaml.Data
             if (mdlg.ShowDialog() == true)
             {
                 MirakurunChannel.ToYamlFile(this.ChannelList?.Select(x => x.GetMirakurunChannel()), mdlg.FileName);
+                this.isSaved = true;
+                this.NotifyPropertyChanged(nameof(this.Caption));
             }
         }
     }
